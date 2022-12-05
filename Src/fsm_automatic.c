@@ -10,12 +10,14 @@
 void fsm_automatic_run() {
 	switch (status) {
 		case INIT:
+			fixLedDuration();
 			setTimer1(1000);
 			status = RED_GREEN;
 			counter1 = redDuration;
 			counter2 = greenDuration;
 			setColor1(AUTO_RED);
 			setColor2(AUTO_GREEN);
+			status = RED_GREEN;
 			break;
 		case RED_GREEN:
 			if (timer1_flag == 1) {

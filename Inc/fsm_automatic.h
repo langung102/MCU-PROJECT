@@ -10,7 +10,7 @@
 
 #include "global.h"
 #include "traffic.h"
-
+#include "fix_led_duration.h"
 void fsm_automatic_run();
 
 #endif /* INC_FSM_AUTOMATIC_H_ */

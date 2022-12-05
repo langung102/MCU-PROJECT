@@ -98,6 +98,17 @@ void setColor2(int color) {
 			break;
 	}
 }
+//void blinkLed(int color){
+//	switch(color){
+//	case MOD_RED:
+//
+//		break;
+//	case MOD_YELLOW:
+//		break;
+//	case MOD_GREEN:
+//		break;
+//	}
+//}
 //void blinkLed1(int color) {
 //	switch (color) {
 //		case AUTO_RED:

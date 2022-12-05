@@ -9,7 +9,9 @@
 #define INC_FSM_MODE_H_
 
 #include "global.h"
-
+#include "fsm_automatic.h"
+#include "fsm_mode.h"
+#include "fsm_tunning.h"
 void fsm_mode();
 
 #endif /* INC_FSM_MODE_H_ */

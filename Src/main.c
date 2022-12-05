@@ -105,8 +105,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, SET);
-  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
+//  HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, SET);
+//  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
   setTimer0(500);
   while (1)
   {
@@ -114,9 +114,9 @@ int main(void)
 //		  HAL_GPIO_TogglePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin);
 //		  setTimer0(500);
 //	  }
-//	  fsm_mode();
-//	  fsm_automatic_run();
-	  HAL_Delay(100);
+	  fsm_mode();
+	  fsm_automatic_run();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
