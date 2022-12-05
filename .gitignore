@@ -1,5 +1,4 @@
-/*
+*
 !.gitignore
-!Inc/*.h
-!Src/*.c
-!*.h
+!Inc/
+!Src/
