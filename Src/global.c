@@ -16,3 +16,7 @@ int greenDuration = 3;
 int counter1 = 5;
 int counter2 = 1;
 int tmp = 5;
+
+int tempRed = 5;
+int tempGreen = 3;
+int tempYellow = 2;

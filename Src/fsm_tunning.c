@@ -19,18 +19,16 @@ void fsm_tunning_run(){
 			 * */
 			status  =  INIT;
 		}
-		//assign redDuration to tmp
-		tmp = redDuration;
 		//button2 is pressed
 		if(check_button_flag(1)){
-			tmp++;
-			if(tmp > 99) tmp = 1;
+			tempRed++;
+			if(tempRed > 99) tempRed = 1;
 			setTimer2(10000);
 		}
 		//button3 is pressed
 		if(check_button_flag(2)){
 			//confirm red duration
-			redDuration = tmp;
+			redDuration = tempRed;
 			setTimer2(10000);
 			//move to MOD_YELLOW status
 			status = MOD_YELLOW;
@@ -45,18 +43,16 @@ void fsm_tunning_run(){
 			 * */
 			status  =  INIT;
 		}
-		//assign yellowDuration to tmp
-		tmp = yellowDuration;
 		//button2 is pressed
 		if(check_button_flag(1)){
-			tmp++;
-			if(tmp > 99) tmp = 1;
+			tempYellow++;
+			if(tempYellow > 99) tempYellow = 1;
 			setTimer2(10000);
 		}
 		//button3 is pressed
 		if(check_button_flag(2)){
 			//confirm yellow duration
-			yellowDuration = tmp;
+			yellowDuration = tempYellow;
 			setTimer2(10000);
 			//move to MOD_GREEN status
 			status = MOD_GREEN;
@@ -71,18 +67,16 @@ void fsm_tunning_run(){
 			 * */
 			status  =  INIT;
 		}
-		//assign greenDuration to tmp
-		tmp = greenDuration;
 		//button2 is pressed
 		if(check_button_flag(1)){
-			tmp++;
-			if(tmp > 99) tmp = 1;
+			tempGreen++;
+			if(tempGreen > 99) tempGreen = 1;
 			setTimer2(10000);
 		}
 		//button3 is pressed
 		if(check_button_flag(2)){
 			//confirm green duration
-			greenDuration = tmp;
+			greenDuration = tempGreen;
 			setTimer2(10000);
 			//move to MOD_RED status
 			status = MOD_RED;
