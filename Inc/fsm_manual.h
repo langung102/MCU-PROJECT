@@ -15,6 +15,6 @@
 #include "traffic.h"
 #include "software_timer.h"
 
-void fsm_manual_run(void);
+void fsm_manual_run();
 
 #endif /* INC_FSM_MANUAL_H_ */

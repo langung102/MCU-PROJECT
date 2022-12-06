@@ -10,6 +10,8 @@
 
 #include "software_timer.h"
 #include "input_reading.h"
+#include "fsm_automatic.h"
+#include "fsm_tunning.h"
 
 #define INIT			1
 #define AUTO_RED		2
@@ -24,10 +26,12 @@
 #define TUNNING			12
 #define PEDESTRIAN		13
 
+#define INIT_MANUAL		14
 #define MANUAL_RED		15
 #define MANUAL_YELLOW	16
 #define MANUAL_GREEN	17
 
+#define INIT_TUNING		19
 #define MOD_RED			20
 #define MOD_YELLOW		21
 #define MOD_GREEN		22
