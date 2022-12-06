@@ -38,4 +38,8 @@ extern int counter1;
 extern int counter2;
 extern int tmp;
 
+extern int tempRed;
+extern int tempYellow;
+extern int tempGreen;
+
 #endif /* INC_GLOBAL_H_ */
