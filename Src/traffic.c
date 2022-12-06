@@ -52,6 +52,18 @@ void setColor2(int color) {
 			break;
 	}
 }
+//void blinkLed(int color){
+//	switch(color){
+//	case MOD_RED:
+//		HAL_GPIO_Toggle(LED2_1_GPIO_Port, LED2_1_Pin);
+//		HAL_GPIO_WritePin(LED2_2_GPIO_Port, LED2_2_Pin, GPIO_PIN_SET);
+//		break;
+//	case MOD_YELLOW:
+//		break;
+//	case MOD_GREEN:
+//		break;
+//	}
+//}
 //void blinkLed1(int color) {
 //	switch (color) {
 //		case AUTO_RED:
