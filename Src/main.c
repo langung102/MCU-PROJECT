@@ -111,11 +111,6 @@ int main(void)
   setTimer0(500);
   while (1)
   {
-//	  if (timer0_flag == 1) {
-//		  HAL_GPIO_TogglePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin);
-//		  setTimer0(500);
-//	  }
-//	  fsm_mode();
 	  fsm_automatic_run();
 	  fsm_manual_run();
 	  fsm_tunning_run();
