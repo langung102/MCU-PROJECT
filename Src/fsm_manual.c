@@ -9,6 +9,13 @@
 
 void fsm_manual_run () {
 	switch (status) {
+	case INIT_MANUAL:
+		status = MANUAL_RED;
+		setColor1(AUTO_RED);
+		setColor2(AUTO_GREEN);
+		setTimer2(5000);
+		setTimer3(500);
+		break;
 	case MANUAL_RED:
 		if (timer3_flag == 1) {
 			blinkLed1(AUTO_RED);
@@ -19,11 +26,10 @@ void fsm_manual_run () {
 			status = RED_GREEN;
 			setColor1(AUTO_RED);
 			setColor2(AUTO_GREEN);
-			setTimer1(redDuration);
+			setTimer1(redDuration*1000);
 		}
 		if (check_button_flag(1)) {
-			status = MOD_RED;
-			setTimer3(500);
+			status = INIT_TUNING;
 		}
 		if (check_button_flag(2)) {
 			status = MANUAL_YELLOW;
@@ -50,11 +56,10 @@ void fsm_manual_run () {
 			status = YELLOW_RED;
 			setColor1(AUTO_YELLOW);
 			setColor2(AUTO_RED);
-			setTimer1(yellowDuration);
+			setTimer1(yellowDuration*1000);
 		}
 		if (check_button_flag(1)) {
-			status = MOD_RED;
-			setTimer3(500);
+			status = INIT_TUNING;
 		}
 		if (check_button_flag(2)) {
 			status = MANUAL_GREEN;
@@ -81,11 +86,10 @@ void fsm_manual_run () {
 			status = GREEN_RED;
 			setColor1(AUTO_GREEN);
 			setColor2(AUTO_RED);
-			setTimer1(greenDuration);
+			setTimer1(greenDuration*1000);
 		}
 		if (check_button_flag(1)) {
-			status = MOD_RED;
-			setTimer3(500);
+			status = INIT_TUNING;
 		}
 		if (check_button_flag(2)) {
 			status = MANUAL_RED;

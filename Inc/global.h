@@ -28,6 +28,7 @@
 #define MANUAL_YELLOW	16
 #define MANUAL_GREEN	17
 
+#define
 #define MOD_RED			20
 #define MOD_YELLOW		21
 #define MOD_GREEN		22

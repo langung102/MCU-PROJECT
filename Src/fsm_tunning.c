@@ -6,10 +6,20 @@
  */
 
 
-#include "fsm_mode.h"
+#include "fsm_tunning.h"
 
 void fsm_tunning_run(){
 	switch(status){
+	case INIT_TUNING:
+		setColor1(AUTO_RED);
+		setColor2(INIT);
+		setTimer2(10000);
+		setTimer3(500);
+		tempRed = redDuration;
+		tempGreen = greenDuration;
+		tempYellow = yellowDuration;
+		status = MOD_RED;
+		break;
 	case MOD_RED:
 		if(timer2_flag == 1 || check_button_flag(1)){
 			/*
@@ -33,6 +43,8 @@ void fsm_tunning_run(){
 		}
 		//button3 is pressed
 		if(check_button_flag(3)){
+			setColor1(AUTO_YELLOW);
+			setColor2(INIT);
 			//confirm red duration
 			redDuration = tempRed;
 			setTimer2(10000);
@@ -63,6 +75,8 @@ void fsm_tunning_run(){
 		}
 		//button3 is pressed
 		if(check_button_flag(3)){
+			setColor1(AUTO_GREEN);
+			setColor2(INIT);
 			//confirm yellow duration
 			yellowDuration = tempYellow;
 			setTimer2(10000);
@@ -93,6 +107,8 @@ void fsm_tunning_run(){
 		}
 		//button3 is pressed
 		if(check_button_flag(3)){
+			setColor1(AUTO_RED);
+			setColor2(INIT);
 			//confirm green duration
 			greenDuration = tempGreen;
 			setTimer2(10000);
