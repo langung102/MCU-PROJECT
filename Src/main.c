@@ -115,12 +115,6 @@ int main(void)
 //		  setTimer0(500);
 //	  }
 	  fsm_mode();
-	  fsm_automatic_run();
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 4836bd0d25b4b4e9455fd652d4a59be2388ff2df
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
