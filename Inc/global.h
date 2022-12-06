@@ -24,9 +24,13 @@
 #define TUNNING			12
 #define PEDESTRIAN		13
 
-#define MOD_RED			15
-#define MOD_YELLOW		16
-#define MOD_GREEN		17
+#define MANUAL_RED		15
+#define MANUAL_YELLOW	16
+#define MANUAL_GREEN	17
+
+#define MOD_RED			20
+#define MOD_YELLOW		21
+#define MOD_GREEN		22
 
 extern int status;
 extern int mode;
