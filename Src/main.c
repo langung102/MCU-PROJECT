@@ -74,6 +74,7 @@ static void MX_TIM3_Init(void);
   */
 int main(void)
 {
+	fsm_mode();
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -116,7 +117,6 @@ int main(void)
 //	  }
 	  fsm_mode();
 	  fsm_automatic_run();
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
