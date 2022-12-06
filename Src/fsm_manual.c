@@ -23,6 +23,7 @@ void fsm_manual_run () {
 		}
 		if (check_button_flag(1)) {
 			status = MOD_RED;
+			setTimer3(500);
 		}
 		if (check_button_flag(2)) {
 			status = MANUAL_YELLOW;
@@ -53,6 +54,7 @@ void fsm_manual_run () {
 		}
 		if (check_button_flag(1)) {
 			status = MOD_RED;
+			setTimer3(500);
 		}
 		if (check_button_flag(2)) {
 			status = MANUAL_GREEN;
@@ -83,6 +85,7 @@ void fsm_manual_run () {
 		}
 		if (check_button_flag(1)) {
 			status = MOD_RED;
+			setTimer3(500);
 		}
 		if (check_button_flag(2)) {
 			status = MANUAL_RED;
