@@ -74,6 +74,7 @@ static void MX_TIM3_Init(void);
   */
 int main(void)
 {
+	fsm_mode();
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -115,6 +116,9 @@ int main(void)
 //		  setTimer0(500);
 //	  }
 	  fsm_mode();
+	  fsm_automatic_run();
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -352,7 +356,6 @@ static void MX_GPIO_Init(void)
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
 }
 
 /* USER CODE BEGIN 4 */
