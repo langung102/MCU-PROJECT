@@ -25,7 +25,8 @@
 #include "software_timer.h"
 #include "input_reading.h"
 #include "fsm_automatic.h"
-#include "fsm_mode.h"
+#include "fsm_manual.h"
+#include "fsm_tunning.h"
 #include "traffic.h"
 /* USER CODE END Includes */
 
@@ -114,7 +115,10 @@ int main(void)
 //		  HAL_GPIO_TogglePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin);
 //		  setTimer0(500);
 //	  }
-	  fsm_mode();
+//	  fsm_mode();
+	  fsm_automatic_run();
+	  fsm_manual_run();
+	  fsm_tunning_run();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
