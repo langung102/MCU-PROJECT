@@ -105,12 +105,22 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, SET);
-  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
+//  HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, SET);
+//  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
   setTimer0(500);
   while (1)
   {
+//	  if (timer0_flag == 1) {
+//		  HAL_GPIO_TogglePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin);
+//		  setTimer0(500);
+//	  }
 	  fsm_mode();
+	  fsm_automatic_run();
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4836bd0d25b4b4e9455fd652d4a59be2388ff2df
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -140,7 +150,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -336,7 +345,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : BUTTON3_Pin */
   GPIO_InitStruct.Pin = BUTTON3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(BUTTON3_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_PDS1_Pin LED1_2_Pin LED2_2_Pin LED2_1_Pin */
@@ -390,3 +399,5 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

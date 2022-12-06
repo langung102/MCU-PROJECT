@@ -55,6 +55,7 @@ void setColor2(int color) {
 			break;
 	}
 }
+
 void blinkLed1(int color) {
 	switch (color) {
 		case AUTO_RED:
