@@ -15,6 +15,7 @@ void setColor1(int);
 void setColor2(int);
 
 void blinkLed1(int);
+void blinkLed2(int);
 void disable1();
 void disable2();
 
