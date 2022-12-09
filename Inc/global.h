@@ -10,8 +10,6 @@
 
 #include "software_timer.h"
 #include "input_reading.h"
-#include "fsm_automatic.h"
-#include "fsm_tunning.h"
 
 #define INIT			1
 #define AUTO_RED		2
@@ -36,6 +34,14 @@
 #define MOD_YELLOW		21
 #define MOD_GREEN		22
 
+#define INIT_PEDESTRIAN 25
+#define PED_GREEN		26
+#define PED_RED			27
+
+#define GREEN_PED		29
+#define RED_PED			30
+
+
 extern int status;
 extern int mode;
 extern int CYCLE;
@@ -49,5 +55,9 @@ extern int tmp;
 extern int tempRed;
 extern int tempYellow;
 extern int tempGreen;
+
+extern int status1;
+extern int counterPedtrian;
+extern int MAX_COUNTER;
 
 #endif /* INC_GLOBAL_H_ */

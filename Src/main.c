@@ -28,6 +28,7 @@
 #include "fsm_manual.h"
 #include "fsm_tunning.h"
 #include "traffic.h"
+#include "fsm_pedestrian.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,18 +103,22 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 //  HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, SET);
 //  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
+  status1 = INIT_PEDESTRIAN;
+  status = INIT;
   setTimer0(500);
   while (1)
   {
-	  fsm_automatic_run();
+	  fsm_automatic_run(htim3);
 	  fsm_manual_run();
 	  fsm_tunning_run();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -351,7 +356,6 @@ static void MX_GPIO_Init(void)
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
 }
 
 /* USER CODE BEGIN 4 */

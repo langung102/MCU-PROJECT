@@ -135,7 +135,26 @@ void blinkLed2(int color) {
 			break;
 	}
 }
-
+void setPedestrian(int color){
+	switch(color){
+	//LED_PEDESTRIAN turn on with  green color
+	case INIT:
+		HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, GPIO_PIN_RESET);
+		break;
+	case GREEN_PED:
+		HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, GPIO_PIN_SET);
+		break;
+	//LED_PEDESTRIAN turn on with  red color
+	case RED_PED:
+		HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, GPIO_PIN_RESET);
+		break;
+	default:
+		break;
+	}
+}
 //void disable1() {
 //	HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_SET);
 //	HAL_GPIO_WritePin(GPIOA, LED_YELLOW0_Pin, GPIO_PIN_SET);

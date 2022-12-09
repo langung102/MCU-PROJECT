@@ -20,3 +20,7 @@ int tmp = 5;
 int tempRed = 5;
 int tempGreen = 3;
 int tempYellow = 2;
+
+int status1 = 25;
+int counterPedtrian = 0;
+int MAX_COUNTER = 5;

@@ -29,6 +29,12 @@ void fsm_tunning_run(){
 			 * */
 			status  =  INIT;
 		}
+		//blink red led
+		if(timer3_flag == 1){
+			blinkLed1(AUTO_RED);
+			blinkLed2(AUTO_RED);
+			setTimer3(500);
+		}
 		//button2 is pressed
 		if(check_button_flag(2)){
 			tempRed++;
@@ -55,6 +61,12 @@ void fsm_tunning_run(){
 			 * */
 			status  =  INIT;
 		}
+		//blink red led
+		if(timer3_flag == 1){
+			blinkLed1(AUTO_YELLOW);
+			blinkLed2(AUTO_YELLOW);
+			setTimer3(500);
+		}
 		//button2 is pressed
 		if(check_button_flag(2)){
 			tempYellow++;
@@ -80,6 +92,12 @@ void fsm_tunning_run(){
 			 * button1 is pressed
 			 * */
 			status  =  INIT;
+		}
+		//blink red led
+		if(timer3_flag == 1){
+			blinkLed1(AUTO_GREEN);
+			blinkLed2(AUTO_GREEN);
+			setTimer3(500);
 		}
 		//button2 is pressed
 		if(check_button_flag(2)){
