@@ -58,5 +58,6 @@ extern int tempGreen;
 
 extern int status1;
 extern int counterPedtrian;
+extern int MAX_COUNTER;
 
 #endif /* INC_GLOBAL_H_ */
