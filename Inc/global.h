@@ -24,14 +24,23 @@
 #define TUNNING			12
 #define PEDESTRIAN		13
 
+#define INIT_MANUAL		14
 #define MANUAL_RED		15
 #define MANUAL_YELLOW	16
 #define MANUAL_GREEN	17
 
-#define
+#define INIT_TUNING		19
 #define MOD_RED			20
 #define MOD_YELLOW		21
 #define MOD_GREEN		22
+
+#define INIT_PEDESTRIAN 25
+#define PED_GREEN		26
+#define PED_RED			27
+
+#define GREEN_PED		29
+#define RED_PED			30
+
 
 extern int status;
 extern int mode;
@@ -46,5 +55,8 @@ extern int tmp;
 extern int tempRed;
 extern int tempYellow;
 extern int tempGreen;
+
+extern int status1;
+extern int counterPedtrian;
 
 #endif /* INC_GLOBAL_H_ */

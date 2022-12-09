@@ -14,6 +14,7 @@ extern int timer0_flag;
 extern int timer1_flag;
 extern int timer2_flag;
 extern int timer3_flag;
+extern int timer4_flag;
 
 void setTimer0(int duration);
 void setTimer1(int duration);

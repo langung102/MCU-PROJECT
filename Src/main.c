@@ -28,6 +28,7 @@
 #include "fsm_manual.h"
 #include "fsm_tunning.h"
 #include "traffic.h"
+#include "fsm_pedestrian.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -75,7 +76,6 @@ static void MX_TIM3_Init(void);
   */
 int main(void)
 {
-	fsm_mode();
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -103,12 +103,15 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 //  HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, SET);
 //  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
+  status1 = INIT_PEDESTRIAN;
+  status = INIT;
   setTimer0(500);
   while (1)
   {

@@ -19,4 +19,6 @@ void blinkLed2(int);
 void disable1();
 void disable2();
 
+void setPedestrian(int color);
+
 #endif /* INC_TRAFFIC_H_ */
