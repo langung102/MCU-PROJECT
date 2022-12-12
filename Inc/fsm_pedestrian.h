@@ -11,6 +11,7 @@
 #include "global.h"
 #include "input_reading.h"
 #include "main.h"
+#include "math.h"
 #include "software_timer.h"
 #include "traffic.h"
 #include "stm32_hal_legacy.h"

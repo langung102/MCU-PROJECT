@@ -142,12 +142,12 @@ void setPedestrian(int color){
 		HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, GPIO_PIN_RESET);
 		break;
-	case GREEN_PED:
+	case PED_GREEN:
 		HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, GPIO_PIN_SET);
 		break;
 	//LED_PEDESTRIAN turn on with  red color
-	case RED_PED:
+	case PED_RED:
 		HAL_GPIO_WritePin(LED_PDS1_GPIO_Port, LED_PDS1_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, GPIO_PIN_RESET);
 		break;

@@ -38,9 +38,6 @@
 #define PED_GREEN		26
 #define PED_RED			27
 
-#define GREEN_PED		29
-#define RED_PED			30
-
 
 extern int status;
 extern int mode;

@@ -11,9 +11,8 @@ void fsm_automatic_run() {
 	switch (status) {
 			case INIT:
 				fixLedDuration();
-				setTimer1(greenDuration);
+				setTimer1(greenDuration*1000);
 				setTimer2(1000);//***
-				status = RED_GREEN;
 				counter1 = redDuration;
 				counter2 = greenDuration;
 				setColor1(AUTO_RED);
@@ -21,18 +20,15 @@ void fsm_automatic_run() {
 				status = RED_GREEN;
 				break;
 			case RED_GREEN:
-				if (timer1_flag == 1) {
-					setColor1(AUTO_RED);
-					setColor2(AUTO_YELLOW);
-					status = RED_YELLOW;
-					setTimer2(1000);//***
-					setTimer1(yellowDuration*1000);
-				}
 				// these line is used for pedestrian
 				if(timer2_flag == 1){//***
 					if (counter2 == 1) {
 					counter1--;
 					counter2 = yellowDuration;
+
+					setColor1(AUTO_RED);
+					setColor2(AUTO_YELLOW);
+					status = RED_YELLOW;
 					}
 					else {
 					counter1--;
@@ -45,18 +41,15 @@ void fsm_automatic_run() {
 				}
 				break;
 			case RED_YELLOW:
-				if (timer1_flag == 1) {
-					setColor1(AUTO_GREEN);
-					setColor2(AUTO_RED);
-					status = GREEN_RED;
-					setTimer2(1000);
-					setTimer1(greenDuration*1000);
-				}
 				// these line is used for pedestrian
 				if(timer2_flag == 1){//***
 					if (counter1 == 1) {
 						counter1 = greenDuration;
 						counter2 = redDuration;
+
+						setColor1(AUTO_GREEN);
+						setColor2(AUTO_RED);
+						status = GREEN_RED;
 					} else {
 						counter1--;
 						counter2--;
@@ -68,18 +61,15 @@ void fsm_automatic_run() {
 				}
 				break;
 			case GREEN_RED:
-				if (timer1_flag == 1) {
-					setColor1(AUTO_YELLOW);
-					setColor2(AUTO_RED);
-					status = YELLOW_RED;
-					setTimer2(1000);
-					setTimer1(yellowDuration*1000);
-				}
 				// these line is used for pedestrian
 				if(timer2_flag == 1){//***
 					if (counter1 == 1) {
 						counter1 = yellowDuration;
 						counter2--;
+
+						setColor1(AUTO_YELLOW);
+						setColor2(AUTO_RED);
+						status = YELLOW_RED;
 					} else {
 						counter1--;
 						counter2--;
@@ -91,18 +81,15 @@ void fsm_automatic_run() {
 				}
 				break;
 			case YELLOW_RED:
-				if (timer1_flag == 1) {
-					setColor1(AUTO_RED);
-					setColor2(AUTO_GREEN);
-					status = RED_GREEN;
-					setTimer2(1000);
-					setTimer1(redDuration*1000);
-				}
 				// these line is used for pedestrian
 				if(timer2_flag == 1){//***
 					if (counter1 == 1) {
 						counter1 = redDuration;
 						counter2 = greenDuration;
+
+						setColor1(AUTO_RED);
+						setColor2(AUTO_GREEN);
+						status = RED_GREEN;
 					} else {
 						counter1--;
 						counter2--;
