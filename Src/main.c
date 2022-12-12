@@ -345,7 +345,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : BUTTON3_Pin */
   GPIO_InitStruct.Pin = BUTTON3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(BUTTON3_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_PDS1_Pin LED1_2_Pin LED2_2_Pin LED2_1_Pin */
