@@ -10,11 +10,11 @@
 int status = 1;
 int mode = 10;
 int CYCLE = 1;
-int redDuration = 5;
-int yellowDuration = 2;
-int greenDuration = 3;
-int counter1 = 5;
-int counter2 = 1;
+int redDuration = 15;
+int yellowDuration = 5;
+int greenDuration = 10;
+int counter1 = 15;
+int counter2 = 10;
 int tmp = 5;
 
 int tempRed = 5;
