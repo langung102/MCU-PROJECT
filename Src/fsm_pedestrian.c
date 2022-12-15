@@ -41,19 +41,11 @@ void fsm_pedestrian_run(TIM_HandleTypeDef htim3){
 	case PED_GREEN:
 		//	the sound generate bip which grow bigger until  led pds is red.
 		//	setcompare (1 - ((double) counter1/MAX_COUNTER))*800 - (((double) counter1)/ Maxcounter)*999
-		if(counter1 >= 5 && timer4_flag == 1){
-			if (buzzer_flag) {
-//				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, (1 - ((double) counter1/MAX_COUNTER))*1200);
-				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, ((double)(log(counter1)-log(MAX_COUNTER))/(log(5)-log(MAX_COUNTER)))*(1000-250)+250);
-				buzzer_flag = 0;
-			} else {
-				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);
-				buzzer_flag = 1;
-			}
-			setTimer4(500);
+		if(counter1 > 5){
+			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, ((double)(log(counter1)-log(MAX_COUNTER))/(log(6)-log(MAX_COUNTER)))*(700-250)+250);
 		}
 		// if counter1 <= 3s, it generate bip bip to warn people not to cross.
-		if(counter1 < 5 && timer4_flag == 1){
+		if(counter1 <= 5 && timer4_flag == 1){
 			// set compare (0.8)*999
 			if (buzzer_flag) {
 				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 800);

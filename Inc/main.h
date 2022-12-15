@@ -59,8 +59,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define BUTTON_PDS_Pin GPIO_PIN_0
-#define BUTTON_PDS_GPIO_Port GPIOA
+#define BUTTON_PDS_Pin GPIO_PIN_13
+#define BUTTON_PDS_GPIO_Port GPIOC
+#define BUTTON_PDSA0_Pin GPIO_PIN_0
+#define BUTTON_PDSA0_GPIO_Port GPIOA
 #define BUTTON1_Pin GPIO_PIN_1
 #define BUTTON1_GPIO_Port GPIOA
 #define USART_TX_Pin GPIO_PIN_2

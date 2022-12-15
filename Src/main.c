@@ -30,6 +30,8 @@
 #include "traffic.h"
 #include "fsm_pedestrian.h"
 #include "math.h"
+#include "stdio.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,6 +70,7 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+char str1[6], str2[25], red[4], green[4], yellow[4], output[50];
 /* USER CODE END 0 */
 
 /**
@@ -104,6 +107,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
+//  HAL_UART_Transmit(&huart2, "UART: \n", 8, 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -112,14 +116,63 @@ int main(void)
 //  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
   status1 = INIT_PEDESTRIAN;
   status = INIT;
-  setTimer0(500);
-  setTimer4(1000);
+  strcpy(red, "R: ");
+  strcpy(green, "G: ");
+  strcpy(yellow, "Y: ");
+  setTimer0(1000);
+  setTimer4(500);
   while (1)
   {
 	  fsm_automatic_run();
 	  fsm_pedestrian_run(htim3);
 	  fsm_manual_run();
 	  fsm_tunning_run();
+	  if (timer0_flag == 1) {
+		sprintf(str2, "%d  ", redDuration);
+		strncat(output, red, 50);
+		strncat(output, str2, 50);
+
+		memset(str2,0,strlen(str2));
+
+		sprintf(str2, "%d  ", greenDuration);
+		strncat(output, green, 50);
+		strncat(output, str2, 50);
+
+		memset(str2,0,strlen(str2));
+
+		sprintf(str2, "%d\r\n", yellowDuration);
+		strncat(output, yellow, 50);
+		strncat(output, str2, 50);
+
+		memset(str2,0,strlen(str2));
+
+		switch (status) {
+			case RED_GREEN:
+				strcpy(str2, "R_G: ");
+				break;
+			case RED_YELLOW:
+				strcpy(str2, "R_Y: ");
+				break;
+			case GREEN_RED:
+				strcpy(str2, "G_R: ");
+				break;
+			case YELLOW_RED:
+				strcpy(str2, "Y_R: ");
+				break;
+			default:
+				break;
+			}
+		strncat(output, str2, 50);
+		sprintf(str1, "%d\r\n\r\n", counter1);
+		strncat(output, str1, 50);
+		HAL_UART_Transmit(&huart2, (void*) output, 50, 500);
+
+		memset(str1,0,strlen(str2));
+		memset(str2,0,strlen(str2));
+		memset(output,0,strlen(output));
+
+		setTimer0(1000);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -323,8 +376,14 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LED_PDS1_Pin|LED1_2_Pin|LED2_2_Pin|LED2_1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : BUTTON_PDS_Pin BUTTON1_Pin BUTTON2_Pin */
-  GPIO_InitStruct.Pin = BUTTON_PDS_Pin|BUTTON1_Pin|BUTTON2_Pin;
+  /*Configure GPIO pin : BUTTON_PDS_Pin */
+  GPIO_InitStruct.Pin = BUTTON_PDS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(BUTTON_PDS_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : BUTTON_PDSA0_Pin BUTTON1_Pin BUTTON2_Pin */
+  GPIO_InitStruct.Pin = BUTTON_PDSA0_Pin|BUTTON1_Pin|BUTTON2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);

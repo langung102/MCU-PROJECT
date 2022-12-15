@@ -42,6 +42,7 @@ void fsm_tunning_run(){
 				tempRed++;
 				if(tempRed > 99) tempRed = 1;
 				setTimer1(500);
+				setTimer2(10000);
 			}
 		} else if(check_button_flag(2)){
 			tempRed++;
@@ -81,6 +82,7 @@ void fsm_tunning_run(){
 				tempYellow++;
 				if(tempYellow > 99) tempYellow = 1;
 				setTimer1(500);
+				setTimer2(10000);
 			}
 		} else if(check_button_flag(2)){
 			tempYellow++;
@@ -120,6 +122,7 @@ void fsm_tunning_run(){
 				tempGreen++;
 				if(tempGreen > 99) tempGreen = 1;
 				setTimer1(500);
+				setTimer2(10000);
 			}
 		} else if(check_button_flag(2)){
 			tempGreen++;
