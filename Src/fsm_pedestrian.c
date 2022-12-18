@@ -18,43 +18,31 @@ void fsm_pedestrian_run(TIM_HandleTypeDef htim3){
 		if(check_button_flag(0)){
 			if(status == RED_GREEN || status == RED_YELLOW){
 				status1 = PED_GREEN;
+				setPedestrian(PED_GREEN);
+				counterPedtrian = 3;
+				setTimer4(500);
 			}
 			if(status == GREEN_RED || status == YELLOW_RED){
 				status1 = PED_RED;
+				setPedestrian(PED_RED);
+				counterPedtrian = 2;
+				setTimer4(1000);
 			}
 			MAX_COUNTER = redDuration;
+			buzzer_flag = 1;
 		}
-		// status1 == 1, pedestrian led have a green color
-		if(status1 == PED_GREEN){
-			setPedestrian(PED_GREEN);
-			counterPedtrian = 3;
-			setTimer4(500);
-		}
-		// status1 == 1, pedestrian led have a red color
-		if(status1 == PED_RED){
-			setPedestrian(PED_RED);
-			counterPedtrian = 2;
-			setTimer4(1000);
-		}
-		buzzer_flag = 1;
 		break;
 	case PED_GREEN:
 		//	the sound generate bip which grow bigger until  led pds is red.
-		//	setcompare (1 - ((double) counter1/MAX_COUNTER))*800 - (((double) counter1)/ Maxcounter)*999
-		if(counter1 >= 5 && timer4_flag == 1){
-			if (buzzer_flag) {
-//				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, (1 - ((double) counter1/MAX_COUNTER))*1200);
-				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, ((double)(log(counter1)-log(MAX_COUNTER))/(log(5)-log(MAX_COUNTER)))*(1000-250)+250);
-				buzzer_flag = 0;
-			} else {
-				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);
-				buzzer_flag = 1;
-			}
-			setTimer4(500);
+		//	setcompare (log(counter1)-log(MAX_COUNTER))/(log(6)-log(MAX_COUNTER)))*(700-250)+250)
+		if(counter1 > 5){
+			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1,
+					((double)(log(counter1)-log(MAX_COUNTER))/(log(6)-log(MAX_COUNTER)))*(700-250)+250);
 		}
-		// if counter1 <= 3s, it generate bip bip to warn people not to cross.
-		if(counter1 < 5 && timer4_flag == 1){
-			// set compare (0.8)*999
+		// if counter1 <= 5s, it generate bip bip to warn people not to cross.
+		if(counter1 <= 5 && timer4_flag == 1){
+			setPedestrian(PED_RED);
+			// set compare 800
 			if (buzzer_flag) {
 				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 800);
 				buzzer_flag = 0;;
@@ -62,9 +50,8 @@ void fsm_pedestrian_run(TIM_HandleTypeDef htim3){
 				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);
 				buzzer_flag = 1;
 			}
-			setTimer4(300 - (5-counter1)*90);
+			setTimer4(300 - (5-counter1)*75);
 		}
-		// if counterPedestrian != 1, status1= PED_RED
 		if(counterPedtrian == 0){
 			setPedestrian(INIT);
 			status1 = INIT_PEDESTRIAN;
@@ -104,10 +91,11 @@ void fsm_pedestrian_run(TIM_HandleTypeDef htim3){
 			}
 			setTimer4(100);
 		}
-		//	if counterPedestrian != 1 & counter2 = 1, status1=
 		if(counterPedtrian == 0){
 			setPedestrian(INIT);
 			status1 = INIT_PEDESTRIAN;
+			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);
+			setTimer4(1000);
 		}
 		if(counterPedtrian != 0  && status == RED_GREEN){
 			setPedestrian(PED_GREEN);
