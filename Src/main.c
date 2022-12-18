@@ -376,14 +376,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LED_PDS1_Pin|LED1_2_Pin|LED2_2_Pin|LED2_1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : BUTTON_PDS_Pin */
-  GPIO_InitStruct.Pin = BUTTON_PDS_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(BUTTON_PDS_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : BUTTON_PDSA0_Pin BUTTON1_Pin BUTTON2_Pin */
-  GPIO_InitStruct.Pin = BUTTON_PDSA0_Pin|BUTTON1_Pin|BUTTON2_Pin;
+  /*Configure GPIO pins : BUTTON_PDS_Pin BUTTON1_Pin BUTTON2_Pin */
+  GPIO_InitStruct.Pin = BUTTON_PDS_Pin|BUTTON1_Pin|BUTTON2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
