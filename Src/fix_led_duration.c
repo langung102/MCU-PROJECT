@@ -11,30 +11,37 @@
 // if a structure red time = green time + yellow time
 // is broken, this function is used to balance it again
 void fixLedDuration(){
-	if (tempGreen != redDuration && tempGreen == greenDuration && tempYellow == yellowDuration) {
-		if (redDuration > (yellowDuration + greenDuration)) {
-				greenDuration = redDuration - yellowDuration;
-			} else if (redDuration < (yellowDuration + greenDuration)) {
-				yellowDuration = redDuration/2;
-				greenDuration = redDuration/2;
-					if (redDuration%2 != 0)
-					greenDuration++;
-		}
-	} else if (tempGreen == redDuration && tempGreen != greenDuration && tempYellow == yellowDuration) {
-		if (redDuration != yellowDuration + greenDuration) {
+	if (tempRed == redDuration && tempGreen == greenDuration && tempYellow != yellowDuration) {
+	 	 if (redDuration != yellowDuration + greenDuration) {
 			redDuration = yellowDuration + greenDuration;
 			if (redDuration > 99) {
 				redDuration = 99;
 				greenDuration = redDuration - yellowDuration;
 			}
 		}
-	} else if (tempGreen == redDuration && tempGreen != greenDuration && tempYellow == yellowDuration) {
+	} else if (tempRed == redDuration && tempGreen != greenDuration && tempYellow == yellowDuration) {
 		if (redDuration != yellowDuration + greenDuration) {
 			redDuration = yellowDuration + greenDuration;
 			if (redDuration > 99) {
 				redDuration = 99;
 				yellowDuration = redDuration - greenDuration;
 			}
+		}
+	} else if (tempRed == redDuration && tempGreen != greenDuration && tempYellow != yellowDuration) {
+		redDuration = greenDuration + yellowDuration;
+		if (redDuration > 99) {
+			redDuration = 99;
+			greenDuration = 50;
+			yellowDuration = 49;
+		}
+	} else {
+		if (redDuration > (yellowDuration + greenDuration)) {
+				greenDuration = redDuration - yellowDuration;
+		} else if (redDuration < (yellowDuration + greenDuration)) {
+			yellowDuration = redDuration/2;
+			greenDuration = redDuration/2;
+			if (redDuration%2 != 0)
+				greenDuration++;
 		}
 	}
 }

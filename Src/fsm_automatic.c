@@ -23,16 +23,16 @@ void fsm_automatic_run() {
 				// these line is used for pedestrian
 				if(timer2_flag == 1){//***
 					if (counter2 == 1) {
-					counter1--;
-					counter2 = yellowDuration;
+						counter1--;
+						counter2 = yellowDuration;
 
-					setColor1(AUTO_RED);
-					setColor2(AUTO_YELLOW);
-					status = RED_YELLOW;
+						setColor1(AUTO_RED);
+						setColor2(AUTO_YELLOW);
+						status = RED_YELLOW;
 					}
 					else {
-					counter1--;
-					counter2--;
+						counter1--;
+						counter2--;
 					}
 					setTimer2(1000);
 				}
