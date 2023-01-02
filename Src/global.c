@@ -10,8 +10,8 @@
 int status = 1;
 int mode = 10;
 int CYCLE = 1;
-int redDuration = 20;
-int yellowDuration = 10;
+int redDuration = 15;
+int yellowDuration = 5;
 int greenDuration = 10;
 int counter1 = 15;
 int counter2 = 10;
@@ -24,3 +24,5 @@ int tempYellow = 2;
 int status1 = 25;
 int counterPedtrian = 0;
 int MAX_COUNTER = 5;
+
+char str1[6], str2[25], red[4], green[4], yellow[4], output[50];
