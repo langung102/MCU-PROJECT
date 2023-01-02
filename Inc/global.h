@@ -57,4 +57,6 @@ extern int status1;
 extern int counterPedtrian;
 extern int MAX_COUNTER;
 
+extern char str1[6], str2[25], red[4], green[4], yellow[4], output[50];
+
 #endif /* INC_GLOBAL_H_ */

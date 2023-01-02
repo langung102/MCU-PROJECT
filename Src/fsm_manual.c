@@ -26,7 +26,9 @@ void fsm_manual_run () {
 			status = RED_GREEN;
 			setColor1(AUTO_RED);
 			setColor2(AUTO_GREEN);
-			setTimer1(redDuration*1000);
+			counter1 = redDuration;
+			counter2 = greenDuration;
+			setTimer2(1000);
 		}
 		if (check_button_flag(1)) {
 			status = INIT_TUNING;
@@ -56,7 +58,9 @@ void fsm_manual_run () {
 			status = YELLOW_RED;
 			setColor1(AUTO_YELLOW);
 			setColor2(AUTO_RED);
-			setTimer1(yellowDuration*1000);
+			counter1 = yellowDuration;
+			counter2 = redDuration - greenDuration - 1;
+			setTimer2(1000);
 		}
 		if (check_button_flag(1)) {
 			status = INIT_TUNING;
@@ -86,7 +90,9 @@ void fsm_manual_run () {
 			status = GREEN_RED;
 			setColor1(AUTO_GREEN);
 			setColor2(AUTO_RED);
-			setTimer1(greenDuration*1000);
+			counter1 = greenDuration;
+			counter2 = redDuration;
+			setTimer2(1000);
 		}
 		if (check_button_flag(1)) {
 			status = INIT_TUNING;

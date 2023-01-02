@@ -29,6 +29,7 @@
 #include "fsm_tunning.h"
 #include "traffic.h"
 #include "fsm_pedestrian.h"
+#include "UART_communication.h"
 #include "math.h"
 #include "stdio.h"
 #include "string.h"
@@ -70,7 +71,7 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-char str1[6], str2[25], red[4], green[4], yellow[4], output[50];
+
 /* USER CODE END 0 */
 
 /**
@@ -116,63 +117,18 @@ int main(void)
 //  HAL_GPIO_WritePin(LED_PDS2_GPIO_Port, LED_PDS2_Pin, RESET);
   status1 = INIT_PEDESTRIAN;
   status = INIT;
+  setTimer0(1000);
+  setTimer4(500);
   strcpy(red, "R: ");
   strcpy(green, "G: ");
   strcpy(yellow, "Y: ");
-  setTimer0(1000);
-  setTimer4(500);
   while (1)
   {
 	  fsm_automatic_run();
 	  fsm_pedestrian_run(htim3);
 	  fsm_manual_run();
 	  fsm_tunning_run();
-	  if (timer0_flag == 1) {
-		sprintf(str2, "%d  ", redDuration);
-		strncat(output, red, 50);
-		strncat(output, str2, 50);
-
-		memset(str2,0,strlen(str2));
-
-		sprintf(str2, "%d  ", greenDuration);
-		strncat(output, green, 50);
-		strncat(output, str2, 50);
-
-		memset(str2,0,strlen(str2));
-
-		sprintf(str2, "%d\r\n", yellowDuration);
-		strncat(output, yellow, 50);
-		strncat(output, str2, 50);
-
-		memset(str2,0,strlen(str2));
-
-		switch (status) {
-			case RED_GREEN:
-				strcpy(str2, "R_G: ");
-				break;
-			case RED_YELLOW:
-				strcpy(str2, "R_Y: ");
-				break;
-			case GREEN_RED:
-				strcpy(str2, "G_R: ");
-				break;
-			case YELLOW_RED:
-				strcpy(str2, "Y_R: ");
-				break;
-			default:
-				break;
-			}
-		strncat(output, str2, 50);
-		sprintf(str1, "%d\r\n\r\n", counter1);
-		strncat(output, str1, 50);
-		HAL_UART_Transmit(&huart2, (void*) output, 50, 500);
-
-		memset(str1,0,strlen(str2));
-		memset(str2,0,strlen(str2));
-		memset(output,0,strlen(output));
-
-		setTimer0(1000);
-	  }
+	  send_data(huart2);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
